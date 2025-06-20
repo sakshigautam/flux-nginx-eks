@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: nginx
-      version: 19.0.0 # Optional: You can omit to get latest
+      #version: 19.0.0 Optional: You can omit to get latest
       sourceRef:
         kind: HelmRepository
         name: bitnami

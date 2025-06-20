@@ -4,14 +4,14 @@ on: workflow_dispatch
 
 env:
   AWS_REGION: us-east-1
-  CLUSTER_NAME: github-eks-cluster
+  CLUSTER_NAME: test-cluster
   NODE_TYPE: t3.medium
   NODE_COUNT: 1
   K8S_VERSION: "1.28"
   FLUX_REPO_OWNER: "sakshigautam"         # Replace with your GitHub org or username
   FLUX_REPO_NAME: "flux-nginx-eks"           # Replace with your Flux Git repo name
   FLUX_REPO_BRANCH: main
-  FLUX_MANIFEST_PATH: ./clusters/github-eks-cluster # Path in repo for Flux manifests
+  FLUX_MANIFEST_PATH: ./clusters/test-cluster # Path in repo for Flux manifests
 
 jobs:
   create-eks:

@@ -4,14 +4,14 @@ on: workflow_dispatch
 
 env:
   AWS_REGION: us-east-1
-  CLUSTER_NAME: test-cluster
+  CLUSTER_NAME: test-cluster-ns
   NODE_TYPE: t3.medium
   NODE_COUNT: 1
   K8S_VERSION: "1.28"
   FLUX_REPO_OWNER: "sakshigautam"         # Replace with your GitHub org or username
   FLUX_REPO_NAME: "flux-nginx-eks"           # Replace with your Flux Git repo name
   FLUX_REPO_BRANCH: main
-  FLUX_MANIFEST_PATH: ./clusters/test-cluster # Path in repo for Flux manifests
+  FLUX_MANIFEST_PATH: ./clusters/test-cluster-ns # Path in repo for Flux manifests
 
 jobs:
   create-eks:
@@ -67,20 +67,7 @@ jobs:
         run: |
           aws eks update-kubeconfig --region $AWS_REGION --name $CLUSTER_NAME
 
-      - name: Check if namespace exists
-        id: check_namespace
-        run: |
-          if kubectl get namespace my-namespace > /dev/null 2>&1; then
-            echo "namespace_exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "namespace_exists=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Create namespace (if not exists)
-        if: steps.check_namespace.outputs.namespace_exists == 'false'
-        run: |
-          kubectl create namespace my-namespace
-
+    
       - name: Bootstrap Flux into EKS Cluster
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

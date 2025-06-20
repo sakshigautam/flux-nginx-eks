@@ -1,4 +1,0 @@
-resources:
-  - namespace.yaml
-  - nginx-source.yaml
-  - nginx-helm-release.yaml

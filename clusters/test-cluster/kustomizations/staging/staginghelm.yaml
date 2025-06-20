@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: "./clusters/github-eks-cluster"
+  path: "./clusters"
   prune: true
   sourceRef:
     kind: GitRepository

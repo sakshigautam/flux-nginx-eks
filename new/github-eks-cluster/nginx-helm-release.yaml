@@ -1,18 +1,18 @@
-apiVersion: helm.toolkit.fluxcd.io/v2
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nginx-release
+  name: nginx
   namespace: nginx
 spec:
   interval: 5m
   chart:
     spec:
       chart: nginx
-      version: 20.1.3
+      version: "9.3.5"           # You can pick latest or specify a stable version
       sourceRef:
-        kind: HelmChart
-        name: nginx-oci
+        kind: HelmRepository
+        name: bitnami
         namespace: flux-system
   values:
     service:
-      type: LoadBalancer
+      type: LoadBalancer       # To expose it externally

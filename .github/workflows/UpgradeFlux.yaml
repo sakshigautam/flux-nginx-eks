@@ -69,5 +69,16 @@ jobs:
 
      
 
-      - name: Upgrade Flux
-        run: flux bootstrap upgrade --version=v2.6.0
+      - name: Bootstrap Flux into EKS Cluster
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          flux bootstrap github upgrade \
+          --owner=$FLUX_REPO_OWNER \
+          --repository=$FLUX_REPO_NAME \
+          --branch=$FLUX_REPO_BRANCH \
+          --path=$FLUX_MANIFEST_PATH \
+          --personal \
+          --token-auth \
+          --version=v2.6.0
+

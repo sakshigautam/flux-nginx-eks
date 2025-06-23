@@ -1,9 +1,8 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmChart
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
 metadata:
-  name: nginx-oci
+  name: bitnami
   namespace: flux-system
 spec:
-  chart: oci://registry-1.docker.io/bitnamicharts/nginx
-  version: 20.1.3
   interval: 10m
+  url: https://charts.bitnami.com/bitnami

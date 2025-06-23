@@ -1,4 +1,4 @@
-name: Create EKS Cluster and Bootstrap Flux
+name: Upgrade Flux
 
 on: workflow_dispatch
 

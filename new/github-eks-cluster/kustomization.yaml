@@ -1,4 +1,4 @@
 resources:
   - namespace.yaml
-  - nginx-source.yaml
+  - nginx-oci-chart.yaml
   - nginx-helm-release.yaml
